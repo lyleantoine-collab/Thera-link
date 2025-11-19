@@ -1,0 +1,8 @@
+hermetic:
+  vibration: {delta: 0.5-4, theta: 4-8, alpha: 8-12, beta: 12-30}  # Hz mappings for resonance
+  correspondence: {layers: ["delta feeds theta", "alpha bridges hemispheres"]}  # Interconnect rules
+  polarity: {left: "analytical", right: "intuitive"}  # Hemisphere tuning
+relational:  # First Nations core
+  interconnection: true  # Enforce no isolated processing
+  respect: {voting: "weighted by harmony score"}  # Ethical agent decisions
+  emergence: {output: "holistic synthesis only"}
