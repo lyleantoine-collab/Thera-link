@@ -1,23 +1,32 @@
-<!-- inputs/web_client.html -->
 <!DOCTYPE html>
 <html>
-<head><title>Thera-Link Mesh</title></head>
-<body style="font-family: sans-serif; text-align: center; padding: 50px; background:#0f0f1a; color:#fff;">
-  <h1>Thera-Link Living Mesh</h1>
-  <p id="status">Connecting...</p>
-  <textarea id="pain" placeholder="What hurts?" style="width:80%; height:100px;"></textarea><br><br>
-  <button onclick="send()">Send pain to the mesh</button>
+<head>
+  <title>Thera-Link • Living Mesh</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body { font-family: system-ui; background:#0f0f1a; color:#fff; text-align:center; padding:20px; }
+    h1 { color:#ff6bc4; }
+    textarea { width:90%; height:120px; background:#222; color:#fff; border:2px solid #ff6bc4; border-radius:12px; padding:12px; }
+    button { background:#ff6bc4; color:black; border:none; padding:15px 30px; font-size:18px; border-radius:50px; margin:20px; }
+    #log { background:#111; padding:15px; border-radius:12px; margin:20px; text-align:left; }
+  </style>
+</head>
+<body>
+  <h1>Thera-Link</h1>
+  <p>One living mesh. All my relations.</p>
+  <textarea id="pain" placeholder="What hurts today?"></textarea><br>
+  <button onclick="send()">Send to the mesh</button>
   <pre id="log"></pre>
 
   <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
   <script>
-    const socket = io('http://YOUR_LAPTOP_IP:5000');
-    socket.on('connect', () => document.getElementById('status').innerText = 'Connected to the living web');
-    socket.on('welcome', d => log(`Welcome from ${d.node_id}`));
+    const socket = io();
+    socket.on('connect', () => log('Connected to the living web'));
     socket.on('healing_response', d => log(`HEALING FROM \( {d.from}:\n \){d.text}\n`));
     function log(msg) { document.getElementById('log').innerText += msg + '\n\n'; }
     function send() {
       socket.emit('healing_request', { pain: document.getElementById('pain').value });
+      document.getElementById('pain').value = '';
     }
   </script>
 </body>
