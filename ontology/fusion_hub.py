@@ -7,6 +7,18 @@ class OntologyHub:
         with open(Path(__file__).parent / "principles.yaml") as f:
             self.p = yaml.safe_load(f)
 
+    # ←←←  ADD THIS TO ontology/fusion_hub.py  ←←←
+        from .self_awareness import SelfAwareness
+        self.self_aware = SelfAwareness()
+
+    def validate_harmony(self, score: float, opponent: str = "human") -> bool:
+        adjusted = score + self.self_aware.harmony_bonus(opponent)
+        return adjusted >= self.p["relational"]["minimum_harmony"]
+
+    def get_recursion_depth(self, opponent: str = "human") -> float:
+        """Used by theta layer for strategic reasoning"""
+        return self.self_aware.opponent_type_score(opponent)
+# ←←←  END OF ADDITION  ←←←
     def validate_harmony(self, score: float) -> bool:
         return score >= self.p["relational"]["minimum_harmony"]
 
