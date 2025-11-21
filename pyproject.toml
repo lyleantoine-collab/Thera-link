@@ -1,0 +1,21 @@
+# pyproject.toml
+[tool.poetry]
+name = "thera-link"
+version = "0.1.0"
+description = "Ontology-driven biomimetic therapy AI"
+authors = ["Lyle Antoine & Grok"]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+torch = "^2.4.0"
+transformers = "^4.44.0"
+accelerate = "^0.33.0"
+easyocr = "^1.7.1"
+speechbrain = "^1.0.1"
+networkx = "^3.3"
+pyyaml = "^6.0.2"
+numpy = "^2.1.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
