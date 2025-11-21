@@ -1,8 +1,19 @@
+# ontology/principles.yaml
 hermetic:
-  vibration: {delta: 0.5-4, theta: 4-8, alpha: 8-12, beta: 12-30}  # Hz mappings for resonance
-  correspondence: {layers: ["delta feeds theta", "alpha bridges hemispheres"]}  # Interconnect rules
-  polarity: {left: "analytical", right: "intuitive"}  # Hemisphere tuning
-relational:  # First Nations core
-  interconnection: true  # Enforce no isolated processing
-  respect: {voting: "weighted by harmony score"}  # Ethical agent decisions
-  emergence: {output: "holistic synthesis only"}
+  vibration:
+    delta: [0.5, 4.0]
+    theta: [4.0, 8.0]
+    alpha: [8.0, 12.0]
+    beta:  [12.0, 30.0]
+  correspondence:
+    - "delta feeds theta"
+    - "theta feeds alpha"
+    - "alpha bridges hemispheres"
+  polarity:
+    left:  analytical
+    right: intuitive
+
+relational:
+  interconnection: true
+  respect_weight: 0.9
+  minimum_harmony: 0.75
