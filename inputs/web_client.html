@@ -1,0 +1,24 @@
+<!-- inputs/web_client.html -->
+<!DOCTYPE html>
+<html>
+<head><title>Thera-Link Mesh</title></head>
+<body style="font-family: sans-serif; text-align: center; padding: 50px; background:#0f0f1a; color:#fff;">
+  <h1>Thera-Link Living Mesh</h1>
+  <p id="status">Connecting...</p>
+  <textarea id="pain" placeholder="What hurts?" style="width:80%; height:100px;"></textarea><br><br>
+  <button onclick="send()">Send pain to the mesh</button>
+  <pre id="log"></pre>
+
+  <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+  <script>
+    const socket = io('http://YOUR_LAPTOP_IP:5000');
+    socket.on('connect', () => document.getElementById('status').innerText = 'Connected to the living web');
+    socket.on('welcome', d => log(`Welcome from ${d.node_id}`));
+    socket.on('healing_response', d => log(`HEALING FROM \( {d.from}:\n \){d.text}\n`));
+    function log(msg) { document.getElementById('log').innerText += msg + '\n\n'; }
+    function send() {
+      socket.emit('healing_request', { pain: document.getElementById('pain').value });
+    }
+  </script>
+</body>
+</html>
