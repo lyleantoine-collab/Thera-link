@@ -1,5 +1,8 @@
-# config.yaml  (Full—Drives everything: Layers, harmony, slime evap, etc.)
-# Future-proof: Tune without code—e.g., bump min_harmony for stricter kin
+# config.yaml — the living heart of Thera-Link
+# One file to rule them all. Change anything here → the whole weave instantly adapts.
+
+profile: desktop          # ← on phone/Pi change to "edge" (or export THERA_PROFILE=edge)
+
 ontology:
   min_harmony: 0.75
   human_bonus: 0.30
@@ -11,28 +14,48 @@ ontology:
 
 layers:
   delta:
-    ants: 10  # Foraging swarm size
-    evap_rate: 0.98  # Instinct trails fade
+    ants: 10
+    evap_rate: 0.98
   theta:
-    arms: 8  # Octopus parallel
+    arms: 8
   alpha:
-    model: "microsoft/Phi-3-mini-4k-instruct"  # Quantized stub
+    model: "microsoft/Phi-3-mini-4k-instruct"
     max_tokens: 200
-    temp: 0.7  # Left analytical
+    temp: 0.7
   beta:
-    queue_size: 50  # Task backlog
-    multimodal: true  # OCR/voice on
+    queue_size: 50
+    multimodal: true
 
 mesh:
   port: 5000
-  beacon_interval: 3  # Discovery pulses
-  max_hops: 10  # Prevent floods
+  beacon_interval: 3
+  max_hops: 10
 
 evolution:
   forks_per_gen: 10
   gratitude_threshold: 0.7
-  log_level: INFO  # Diagnostics
+  log_level: INFO
 
-logging:
-  level: INFO
-  file: "thera_link.log"  # Self-heal traces
+security:
+  enabled: true
+  encryption: aes256
+  voice_biometric: true
+  config_sign: true
+  mesh_tls: true          # ← turns off automatically in edge mode (battery saver)
+  key_source: device_entropy
+
+edge_overrides:
+  when: edge
+  theta:
+    arms: 3
+  alpha:
+    quantization: int8
+    max_tokens: 120
+    temp: 0.6
+  delta:
+    ants: 4
+  beta:
+    queue_size: 10
+    multimodal: false
+  security:
+    mesh_tls: false       # ← saves ~30 % battery on phone/Pi
