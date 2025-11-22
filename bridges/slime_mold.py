@@ -22,3 +22,10 @@ class EmotionalSlimeBridge:
     def dominant_emotion(self):
         flows = [d["flow"] * (1 + random.random()) for u,v,d in self.G.edges(data=True)]
         return max(set([d["emotion"] for u,v,d in self.G.edges(data=True)]), key=flows.count)
+# ... (in EmotionalSlimeBridge)
+def auto_prune(self, threshold=0.5, emotion_boost='gratitude'):
+    weak_edges = [(u,v) for u,v,d in self.G.edges(data=True) if d['flow'] < threshold]
+    for u,v in weak_edges:
+        self.G.remove_edge(u,v)
+    self.pulse(emotion_boost, 1.5)  # Emergent: Boost survivors
+    print(f"Pruned {len(weak_edges)} weak paths—flow lighter.")
