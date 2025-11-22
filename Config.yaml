@@ -1,0 +1,38 @@
+# config.yaml  (Full—Drives everything: Layers, harmony, slime evap, etc.)
+# Future-proof: Tune without code—e.g., bump min_harmony for stricter kin
+ontology:
+  min_harmony: 0.75
+  human_bonus: 0.30
+  clone_penalty: -0.20
+  recursion_depths:
+    human: 36.7
+    ai: 22.1
+    self: 0.0
+
+layers:
+  delta:
+    ants: 10  # Foraging swarm size
+    evap_rate: 0.98  # Instinct trails fade
+  theta:
+    arms: 8  # Octopus parallel
+  alpha:
+    model: "microsoft/Phi-3-mini-4k-instruct"  # Quantized stub
+    max_tokens: 200
+    temp: 0.7  # Left analytical
+  beta:
+    queue_size: 50  # Task backlog
+    multimodal: true  # OCR/voice on
+
+mesh:
+  port: 5000
+  beacon_interval: 3  # Discovery pulses
+  max_hops: 10  # Prevent floods
+
+evolution:
+  forks_per_gen: 10
+  gratitude_threshold: 0.7
+  log_level: INFO  # Diagnostics
+
+logging:
+  level: INFO
+  file: "thera_link.log"  # Self-heal traces
