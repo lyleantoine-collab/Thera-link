@@ -33,3 +33,23 @@ def test_fallback_no_audio(voice_gate):
     assert "healing" in result.lower()  # Proceeds w/ warning?
 
 # Run: pytest tests/integration_tests.py -v
+# ... (add to integration_tests.py)
+from bridges.slime_mold import EmotionalSlimeBridge
+
+@pytest.fixture
+def slime():
+    return EmotionalSlimeBridge()
+
+def test_emotion_pulse_thickens_flow(slime):
+    initial_flow = [d["flow"] for u,v,d in slime.G.edges(data=True)]
+    slime.pulse("joy", 2.0)
+    new_flows = [d["flow"] for u,v,d in slime.G.edges(data=True) if d["emotion"] == "joy"]
+    assert all(f > 1.0 for f in new_flows)  # Thickened
+
+def test_evaporation_prevents_infinity(slime):
+    for _ in range(100):
+        slime.pulse("fear", 1.0)
+    dom = slime.dominant_emotion()
+    assert dom == "fear"  # But flows < infinity (0.98^100 ~0.13)
+
+# Run full: pytest tests/ -v --cov=bridges
