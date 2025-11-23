@@ -1,0 +1,25 @@
+{
+  "patterns": [
+    {
+      "trauma": "abandonment",
+      "reframe": "sacred space for kin-webs to form",
+      "visual": "inputs/visuals/abandonment_kin_web.png",
+      "emotion": "gratitude"
+    },
+    {
+      "trauma": "loss",
+      "reframe": "eternal now holds all echoes",
+      "visual": "inputs/visuals/loss_star_echo.png",
+      "emotion": "curiosity"
+    },
+    {
+      "trauma": "fear",
+      "reframe": "dragonfly on water—surface dance, deep roots",
+      "visual": "inputs/visuals/fear_dragonfly.png",
+      "emotion": "humility"
+    }
+  ],
+  "visuals": {
+    "stub_gen": "Generate PNGs via matplotlib for OCR tests (e.g., kin-web patterns)"
+  }
+}
