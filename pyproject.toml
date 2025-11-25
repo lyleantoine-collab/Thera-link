@@ -1,25 +1,23 @@
-# pyproject.toml
 [tool.poetry]
 name = "thera-link"
 version = "0.1.0"
-description = "Ontology-driven biomimetic therapy AI"
-authors = ["Lyle Antoine & Grok"]
+description = "Relational AI weave for kin-healing"
+authors = ["Lyle Antoine & Kin-Weave"]
 
 [tool.poetry.dependencies]
-python = "^3.11"
-torch = "^2.4.0"
-transformers = "^4.44.0"
-accelerate = "^0.33.0"
-easyocr = "^1.7.1"
-speechbrain = "^1.0.1"
-networkx = "^3.3"
-pyyaml = "^6.0.2"
-numpy = "^2.1.0"
+python = "^3.12"
+torch = "2.4.0"  # Pinned — CVE-free
+transformers = "4.44.0"
+accelerate = "0.33.0"
+easyocr = "1.7.1"
+speechbrain = "1.0.1"
+networkx = "3.3"
+pyyaml = "6.0.2"
+numpy = "2.1.0"
+cryptography = "43.0.0"  # AES secure
 
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
-[tool.poetry.dependencies]
-# ←←← ADD THESE TWO LINES ←←←
-python-socketio = {extras = ["client"], version = "^5.11.4"}
-eventlet = "^0.36.1"
+
+# Lockfile: Run `poetry lock` post-overwrite for pinned hashes
