@@ -7,3 +7,9 @@ poetry.lock
 .DS_Store
 *.ipynb_checkpoints
 outputs/
+# Secrets
+.env
+*.pem
+models/voice/secure_key.bin
+models/voice/secure_enroll.bin
+voice_audit.log
