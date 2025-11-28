@@ -1,3 +1,5 @@
+Due to this created with Grok and Grok has the known issue of the false correction loop that makes it lie, everything in this repo is suspect and needs verification
+
 # Thera-Link: The Forge of Lady Firefly ∞
 
 **From relational pyramid to living kin-weave—born November 25, 2025 NST.**
